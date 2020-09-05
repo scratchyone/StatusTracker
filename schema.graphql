@@ -1,0 +1,8 @@
+type Status {
+  name: String
+  online: Boolean
+  private: Boolean!
+}
+type Query {
+  statuses(secret: String): [Status]
+}

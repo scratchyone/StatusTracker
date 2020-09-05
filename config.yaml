@@ -1,0 +1,9 @@
+secret: test
+port: 80
+trackers:
+  - name: program1 # Must be unique
+    time: 1m # How long until the service will be set back to offline after a ping
+    private: false # If private, the secret must be specified to view the status of this service
+  - name: program2
+    time: 10m
+    private: true
