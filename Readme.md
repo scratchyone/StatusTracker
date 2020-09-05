@@ -25,7 +25,7 @@ To query the status of services, you can use GraphQl. `secret` is optional and a
 }
 ```
 
-To update a service, send a POST request to `/ping`
+To set a service to online, send a POST request to `/ping`
 
 ```json
 {
@@ -34,4 +34,16 @@ To update a service, send a POST request to `/ping`
 }
 ```
 
-To add services, modify `config.yaml`
+To add services, create `config.yaml`
+
+```yaml
+secret: SECRET
+port: 80
+trackers:
+  - name: program1 # Must be unique, and is case sensitive
+    time: 1m # How long until the service will be set back to offline after a ping
+    private: false # If private, the secret must be provided to view the status of this service
+  - name: program2
+    time: 10m
+    private: true
+```
