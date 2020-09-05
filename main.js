@@ -33,18 +33,21 @@ var root = {
             return null;
           }
         }
-        if (
-          res.find((row) => {
-            return (
-              row.name === tracker.name &&
-              row.timestamp >
-                (Date.now() - tracker.time.asMilliseconds()) / 1000
-            );
-          })
-        ) {
-          return { private, online: true, ...tracker };
+        let row = res.find((row) => {
+          return (
+            row.name === tracker.name &&
+            row.timestamp > (Date.now() - tracker.time.asMilliseconds()) / 1000
+          );
+        });
+        if (row) {
+          return { private, online: true, lastSeen: row.timestamp, ...tracker };
         } else {
-          return { private, online: false, ...tracker };
+          return {
+            private,
+            online: false,
+            lastSeen: row.timestamp,
+            ...tracker,
+          };
         }
       })
       .filter((n) => n);

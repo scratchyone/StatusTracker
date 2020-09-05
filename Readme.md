@@ -21,6 +21,7 @@ To query the status of services, you can use GraphQl. `secret` is optional and a
     name
     online
     private
+    lastSeen
   }
 }
 ```

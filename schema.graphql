@@ -1,7 +1,9 @@
 type Status {
-  name: String
-  online: Boolean
+  name: String!
+  online: Boolean!
   private: Boolean!
+  "Last time this service pinged, format is Unix epoch in seconds"
+  lastSeen: Int!
 }
 type Query {
   statuses(secret: String): [Status]
